@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b256e">
+  <title>Farmacias Brasil · Catálogo de productos</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,600;0,700;1,700;1,800&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera-in">
+      <a class="marca" href="/"><img src="logo-brasil.png" alt="Farmacias Brasil" width="122" height="64"></a>
+      <form id="buscar" class="buscar" role="search">
+        <input id="texto" type="search" placeholder="Buscar medicamento, código o laboratorio" aria-label="Buscar">
+        <button class="boton">Buscar</button>
+      </form>
+      <button id="nuevo" class="boton boton-verde">+ Nuevo producto</button>
+    </div>
+    <nav class="franja">
+      <div class="franja-in">
+        <span class="lema">Salud Total, Al Mejor Precio</span>
+        <div id="categorias" class="categorias" role="tablist" aria-label="Categorías"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="contenido">
+    <section class="resumen" id="resumen" aria-label="Resumen del catálogo"></section>
+    <p id="aviso" class="aviso" role="status" hidden></p>
+    <ul id="rejilla" class="rejilla"></ul>
+    <p id="vacio" class="vacio" hidden>No hay productos que coincidan con la búsqueda.</p>
+  </main>
+
+  <dialog id="dialogo" class="dialogo">
+    <form id="formulario" method="dialog" class="formulario">
+      <h2 id="titulo-form">Nuevo producto</h2>
+      <ul id="errores" class="errores" role="alert" hidden></ul>
+      <div class="campo-foto ancho">
+        <div class="foto foto-grande"><img id="vista" alt="" hidden><span id="sin-vista">Sin foto</span></div>
+        <div class="foto-controles">
+          <label>Foto del producto <input id="imagen" name="imagen" type="file" accept="image/jpeg,image/png,image/webp"></label>
+          <small>JPG, PNG o WebP de hasta 2 MB. Se guarda en PostgreSQL.</small>
+          <label class="check" id="quitar-envoltura" hidden><input type="checkbox" name="quitar_imagen" value="true"> Quitar la foto actual</label>
+        </div>
+      </div>
+      <label>Código <input name="codigo" maxlength="20" required placeholder="MED-010"></label>
+      <label>Categoría <select name="categoria" id="sel-categoria" required></select></label>
+      <label class="ancho">Nombre <input name="nombre" maxlength="120" required></label>
+      <label>Laboratorio o marca <input name="laboratorio" maxlength="80"></label>
+      <label>Presentación <input name="presentacion" maxlength="80" placeholder="Caja 30 tabletas"></label>
+      <label>Precio (USD) <input name="precio" type="number" step="0.01" min="0" required></label>
+      <label>Existencias <input name="existencias" type="number" min="0" step="1" required></label>
+      <label class="check ancho"><input type="checkbox" name="requiere_receta" value="true"> Requiere receta médica</label>
+      <div class="botones ancho">
+        <button type="button" id="cancelar" class="boton boton-sec">Cancelar</button>
+        <button type="submit" id="guardar" class="boton">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="pie">
+    <div class="pie-in">
+      <span class="pie-titulo">Desplegado en Kubo PaaS · plan premium</span>
+      <ul id="stack" class="stack"></ul>
+      <p class="pie-nota">Proyecto académico de Informática en la Nube: caso simulado, sin relación oficial con Farmacias Brasil.
+        API REST en <a href="/api/productos">/api/productos</a> · <a href="/api/info">/api/info</a></p>
+    </div>
+  </footer>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
