@@ -11,7 +11,7 @@ para listar, buscar, filtrar, crear, editar y eliminar.
 |---|---|
 | Stack | Node.js 22 · Express 5 · PostgreSQL 17 (base administrada por Kubo) · drivers `pg` y `multer` |
 | URL pública | El subdominio que asigne Kubo (por ejemplo `https://farmaciasbrasil.kubo.dpdns.org`) |
-| Despliegue | Kubo vigila la rama `main`: cada `git push` construye la imagen con este `Dockerfile` y la despliega |
+| Despliegue | Kubo vigila la rama `main`: cada `git push` construye la imagen con este `Dockerfile` y la despliega en menos de 1 minuto de detectarlo (sin configurar nada en GitHub) |
 
 ## Variables de entorno
 
